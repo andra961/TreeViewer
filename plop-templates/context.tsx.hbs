@@ -1,0 +1,27 @@
+import React, {createContext, ReactNode, useContext} from 'react';
+
+
+type {{pascalCase name}}ContextType = {
+
+}
+
+export const {{pascalCase name}}Context = createContext<{{pascalCase name}}ContextType | null>(null)
+
+export const use{{pascalCase name}}Context = () => {
+    const contextValue = useContext({{pascalCase name}}Context)
+
+    if (!contextValue) {
+        throw new Error(
+            "use{{pascalCase name}}Context has to be used within <{{pascalCase name}}Context.Provider>"
+        );
+    }
+
+  return contextValue;
+}
+
+export const {{pascalCase name}}ContextProvider = ({children}: {children: ReactNode}) => {
+    return (
+        <{{pascalCase name}}Context.Provider value={value}>
+          {children}
+        </{{pascalCase name}}Context.Provider>)
+};

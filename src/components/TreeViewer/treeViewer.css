@@ -1,0 +1,14 @@
+.treeViewerContainer {
+  flex: 4;
+  border: 1px solid black;
+}
+
+.treeNode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
