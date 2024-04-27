@@ -1,25 +1,29 @@
 export function parser(input) {
   const parsed = JSON.parse(input);
 
+  // null root or empty array edge case
   if (parsed[0] === null || parsed[0] === undefined) return;
 
-  const root = { val: parsed[0] };
+  /* builds a node given its value
+     val be shown on the tree as the label of the node, 
+     it can be easily changed according to needs by assigning a different value
+  */
+  const createNode = (val) => ({ val: val });
+
+  const root = createNode(parsed[0]);
 
   const nodesQueue = [root];
 
   let currNode = null;
-  let currChild = 0;
 
   const appendChild = (childVal) => {
-    if (childVal !== null) {
-      const childNode = { val: childVal };
-      currNode[currChild === 0 ? "left" : "right"] = childNode;
+    const childNode = childVal !== null ? createNode(childVal) : null;
+    currNode[currNode.left === undefined ? "left" : "right"] = childNode;
+    if (childNode !== null) {
       nodesQueue.push(childNode);
     }
-    currChild++;
-    if (currChild > 1) {
+    if (currNode.left !== undefined && currNode.right !== undefined) {
       currNode = null;
-      currChild = 0;
     }
   };
 

@@ -4,10 +4,11 @@ import { TreeContextProvider } from "./context/TreeContext";
 import { ReactFlowProvider } from "reactflow";
 import TreeViewer from "@components/TreeViewer";
 import ControlPanel from "@components/ControlPanel";
+import { customAdapter } from "@components/TreeViewer/ReactFlowAdapters/customAdapter";
 
 function App() {
   return (
-    <TreeContextProvider>
+    <TreeContextProvider reactFlowAdapter={customAdapter}>
       <div className="mainContainer">
         <ReactFlowProvider>
           <ControlPanel />

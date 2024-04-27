@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import "./inputForm.css";
 import { useTreeContext } from "../../context/TreeContext";
-import { useReactFlow } from "reactflow";
 import { Textarea } from "@shadcn/components/ui/textarea";
 import { Button } from "@shadcn/components/ui/button";
 import { AlertCircle } from "lucide-react";
@@ -19,14 +18,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@shadcn/components/ui/tooltip";
-import { ReactFlowAdapter } from "../../parsers/reactFlowAdapter";
 import { TreeNode } from "../../parsers/parserApi";
 
 type InputFormProps = {};
 
 const InputForm = ({}: InputFormProps) => {
-  const { setNodes, setEdges, editorValue } = useTreeContext();
-  const { fitView } = useReactFlow();
+  const { setTreeData, editorValue } = useTreeContext();
   const [value, setValue] = useState("");
   const [error, setError] = useState<Error | null>(null);
 
@@ -35,12 +32,9 @@ const InputForm = ({}: InputFormProps) => {
 
     try {
       const parser = new Function("return " + editorValue);
-      const parsed = parser()(value);
-      const { nodes, edges } = ReactFlowAdapter.adapt(parsed as TreeNode);
-      setNodes(nodes);
-      setEdges(edges);
+      const parsed = parser()(value) as TreeNode;
+      setTreeData(parsed);
       setError(null);
-      fitView();
     } catch (e) {
       if (e instanceof Error) setError(e);
     }

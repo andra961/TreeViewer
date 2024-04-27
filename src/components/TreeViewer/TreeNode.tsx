@@ -1,9 +1,13 @@
-import React from "react";
 import { Handle, NodeProps, Position } from "reactflow";
+
+export const TREE_NODE_DIAMETER = 40;
 
 const TreeNode = ({ data }: NodeProps) => {
   return (
-    <div className="treeNode">
+    <div
+      className="treeNode"
+      style={{ width: TREE_NODE_DIAMETER, height: TREE_NODE_DIAMETER }}
+    >
       <Handle
         type="target"
         position={Position.Left}

@@ -11,6 +11,5 @@ export type TreeNode =
       left: TreeNode;
       right: TreeNode;
     }
-  | undefined;
-
-export type ParsedResult = TreeNode;
+  | undefined
+  | null;
