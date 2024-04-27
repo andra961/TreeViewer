@@ -1,7 +1,8 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { Edge, Node } from "reactflow";
 import { useLocalStorage } from "usehooks-ts";
-import { DEFAULT_PARSER, Parser } from "../parsers/defaultParser";
+import { Parser } from "../parsers/parserApi";
+import { LEVEL_ORDER_TRAVERSAL_PARSER } from "../parsers/levelOrderTraversalParser/levelOrderTraversalParser";
 
 type TreeContextType = {
   nodes: Node[];
@@ -36,9 +37,11 @@ export const TreeContextProvider = ({ children }: { children: ReactNode }) => {
 
   const [parsers, setParsers] = useLocalStorage<Parser[]>("parsers", []);
 
-  const [selectedParser, setSelectedParser] = useState(DEFAULT_PARSER);
+  const [selectedParser, setSelectedParser] = useState(
+    LEVEL_ORDER_TRAVERSAL_PARSER
+  );
 
-  const [editorValue, setEditorValue] = useState(DEFAULT_PARSER.parserFunction);
+  const [editorValue, setEditorValue] = useState(selectedParser.parserFunction);
 
   return (
     <TreeContext.Provider
@@ -47,7 +50,7 @@ export const TreeContextProvider = ({ children }: { children: ReactNode }) => {
         edges,
         setNodes,
         setEdges,
-        parsers: [DEFAULT_PARSER, ...parsers],
+        parsers: [LEVEL_ORDER_TRAVERSAL_PARSER, ...parsers],
         setParsers,
         selectedParser,
         setSelectedParser,

@@ -19,7 +19,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@shadcn/components/ui/tooltip";
-import { ReactFlowAdapter } from "../../parsers/parserAdapter";
+import { ReactFlowAdapter } from "../../parsers/reactFlowAdapter";
+import { TreeNode } from "../../parsers/parserApi";
 
 type InputFormProps = {};
 
@@ -33,10 +34,9 @@ const InputForm = ({}: InputFormProps) => {
     e.preventDefault();
 
     try {
-      // console.log(new Function("return " + editorValue));
       const parser = new Function("return " + editorValue);
-      // console.log(parser()(value));
-      const { nodes, edges } = ReactFlowAdapter.adapt(parser()(value));
+      const parsed = parser()(value);
+      const { nodes, edges } = ReactFlowAdapter.adapt(parsed as TreeNode);
       setNodes(nodes);
       setEdges(edges);
       setError(null);

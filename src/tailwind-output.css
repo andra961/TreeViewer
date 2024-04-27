@@ -782,6 +782,10 @@ body {
   white-space: nowrap;
 }
 
+.whitespace-pre {
+  white-space: pre;
+}
+
 .rounded-lg {
   border-radius: var(--radius);
 }
