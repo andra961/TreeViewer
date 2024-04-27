@@ -1,6 +1,5 @@
 .treeViewerContainer {
-  flex: 4;
-  border: 1px solid black;
+  grid-area: viewer;
 }
 
 .treeNode {

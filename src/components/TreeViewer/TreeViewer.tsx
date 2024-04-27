@@ -1,18 +1,14 @@
 import Dagre, { GraphLabel } from "@dagrejs/dagre";
 import { useMemo } from "react";
-import ReactFlow, {
-  ReactFlowProvider,
-  Controls,
-  Background,
-  Node,
-  Edge,
-} from "reactflow";
+import ReactFlow, { Controls, Node, Edge } from "reactflow";
 import "./treeViewer.css";
 import "reactflow/dist/style.css";
 import { useTreeContext } from "../../context/TreeContext";
 import TreeNode from "./TreeNode";
 
 const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
+
+const NODE_TYPES = { "tree-node": TreeNode };
 
 const getLayoutedElements = (
   nodes: Node[],
@@ -47,13 +43,8 @@ const TreeViewer = () => {
   }, [initialNodes, initialEdges]);
 
   return (
-    <div className="treeViewerContainer">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        nodeTypes={{ "tree-node": TreeNode }}
-        fitView
-      >
+    <div className="treeViewerContainer border">
+      <ReactFlow nodes={nodes} edges={edges} nodeTypes={NODE_TYPES} fitView>
         <Controls />
       </ReactFlow>
     </div>

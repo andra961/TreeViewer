@@ -2,6 +2,11 @@
   height: 100vh;
   display: flex;
   gap: 30px;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: 2fr 4fr;
+  grid-template-areas:
+    "control viewer"
+    "control viewer";
   padding: 20px;
 }

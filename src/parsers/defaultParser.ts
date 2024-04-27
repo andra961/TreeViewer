@@ -1,42 +1,26 @@
-import { Edge, Node } from "reactflow";
+import { parser } from "./parser";
 
-export const defaultParser = (input: string) => {
-  const nodes: Node[] = [];
-  const edges: Edge[] = [];
+export type Parser = {
+  name: string;
+  description?: string;
+  inputDescription?: string;
+  parserFunction: string;
+};
 
-  const parsed: (number | null)[] = JSON.parse(input);
+export type ParserResult = {
+  nodes: {
+    id: string;
+    data: string;
+  }[];
+  edges: {
+    source: string;
+    target: string;
+  }[];
+};
 
-  const nodesQueue: number[] = [];
-
-  let currNode: number | null = null;
-
-  const createEdge = (s: number, t: number) => {
-    edges.push({
-      source: s.toString(),
-      target: t.toString(),
-      id: `${s}-${t}`,
-      type: "straight",
-    });
-  };
-
-  parsed.forEach((p, i) => {
-    if (currNode !== null) {
-      if (p !== null) createEdge(i, currNode);
-      currNode = null;
-    } else if (nodesQueue.length > 0) {
-      currNode = nodesQueue.shift()!;
-      if (p !== null) createEdge(i, currNode);
-    }
-    if (p !== null) {
-      nodes.push({
-        id: i.toString(),
-        data: { label: p.toString() },
-        position: { x: 0, y: 0 },
-        type: "tree-node",
-      });
-      nodesQueue.push(i);
-    }
-  });
-
-  return { nodes, edges };
+export const DEFAULT_PARSER: Parser = {
+  name: "Level Order Traversal",
+  inputDescription: "des",
+  description: "des",
+  parserFunction: parser.toString(),
 };
