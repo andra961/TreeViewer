@@ -16,11 +16,11 @@ const TreeViewer = () => {
 
   const { nodes, edges } = useMemo(() => {
     return reactFlowAdapter.adapt(treeData);
-  }, [treeData]);
+  }, [treeData, reactFlowAdapter]);
 
   useEffect(() => {
     setTimeout(() => fitView({ duration: 200 }), 0);
-  }, [nodes, edges]);
+  }, [nodes, edges, fitView]);
 
   const debouncedFitView = useMemo(
     () =>
