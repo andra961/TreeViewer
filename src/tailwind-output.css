@@ -644,16 +644,16 @@ body {
   margin-bottom: 0.25rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .flex {
   display: flex;
 }
 
 .inline-flex {
   display: inline-flex;
-}
-
-.grid {
-  display: grid;
 }
 
 .hidden {
@@ -696,6 +696,10 @@ body {
   height: 100vh;
 }
 
+.h-\[40px\] {
+  height: 40px;
+}
+
 .h-\[var\(--radix-select-trigger-height\)\] {
   height: var(--radix-select-trigger-height);
 }
@@ -708,16 +712,20 @@ body {
   height: 1px;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .max-h-96 {
   max-height: 24rem;
 }
 
-.min-h-\[80px\] {
-  min-height: 80px;
-}
-
 .min-h-0 {
   min-height: 0px;
+}
+
+.min-h-\[80px\] {
+  min-height: 80px;
 }
 
 .w-10 {
@@ -764,6 +772,10 @@ body {
   width: 1px;
 }
 
+.w-\[350px\] {
+  width: 350px;
+}
+
 .min-w-\[8rem\] {
   min-width: 8rem;
 }
@@ -788,14 +800,18 @@ body {
   cursor: default;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.touch-none {
+  touch-action: none;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-}
-
-.resize {
-  resize: both;
 }
 
 .flex-col {
@@ -826,10 +842,6 @@ body {
   overflow: hidden;
 }
 
-.overflow-visible {
-  overflow: visible;
-}
-
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -850,6 +862,14 @@ body {
   border-radius: calc(var(--radius) - 4px);
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-\[inherit\] {
+  border-radius: inherit;
+}
+
 .border {
   border-width: 1px;
 }
@@ -867,12 +887,28 @@ body {
   border-top-width: 1px;
 }
 
+.border-l {
+  border-left-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
 .border-destructive\/50 {
   border-color: hsl(var(--destructive) / 0.5);
 }
 
 .border-input {
   border-color: hsl(var(--input));
+}
+
+.border-l-transparent {
+  border-left-color: transparent;
+}
+
+.border-t-transparent {
+  border-top-color: transparent;
 }
 
 .bg-background {
@@ -915,6 +951,10 @@ body {
   padding: 30px;
 }
 
+.p-\[1px\] {
+  padding: 1px;
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -928,6 +968,11 @@ body {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.px-\[30px\] {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .py-1 {
@@ -950,17 +995,12 @@ body {
   padding-bottom: 1rem;
 }
 
-.px-\[30px\] {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.pb-0 {
-  padding-bottom: 0px;
-}
-
 .pb-4 {
   padding-bottom: 1rem;
+}
+
+.pb-\[30px\] {
+  padding-bottom: 30px;
 }
 
 .pl-8 {
@@ -973,14 +1013,6 @@ body {
 
 .pt-0 {
   padding-top: 0px;
-}
-
-.pt-4 {
-  padding-top: 1rem;
-}
-
-.pb-\[30px\] {
-  padding-bottom: 30px;
 }
 
 .text-sm {
@@ -1442,10 +1474,6 @@ body {
 .\[\&\[data-panel-group-direction\=vertical\]\>div\]\:rotate-90[data-panel-group-direction=vertical]>div {
   --tw-rotate: 90deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.\[\&\[data-state\=\'open\'\]\]\:h-full[data-state='open'] {
-  height: 100%;
 }
 
 .\[\&\[data-state\=open\]\>svg\]\:rotate-180[data-state=open]>svg {

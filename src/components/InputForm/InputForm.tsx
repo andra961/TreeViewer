@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./inputForm.css";
-import { useTreeContext } from "../../context/TreeContext";
+import { DEFAULT_INPUT, useTreeContext } from "../../context/TreeContext";
 import { Textarea } from "@shadcn/components/ui/textarea";
 import { Button } from "@shadcn/components/ui/button";
 import { AlertCircle } from "lucide-react";
@@ -18,21 +18,20 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@shadcn/components/ui/tooltip";
-import { TreeNode } from "../../parsers/parserApi";
+import { parseParserCode } from "../../parsers/parserApi";
 
 type InputFormProps = {};
 
 const InputForm = ({}: InputFormProps) => {
   const { setTreeData, editorValue, selectedParser } = useTreeContext();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(DEFAULT_INPUT);
   const [error, setError] = useState<Error | null>(null);
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     try {
-      const parser = new Function("return " + editorValue);
-      const parsed = parser()(value) as TreeNode;
+      const parsed = parseParserCode(editorValue)(value);
       setTreeData(parsed);
       setError(null);
     } catch (e) {
@@ -63,6 +62,7 @@ const InputForm = ({}: InputFormProps) => {
         </TooltipProvider>
       </div>
       <Textarea
+        placeholder={`Insert your input which represents a tree (ex: ${DEFAULT_INPUT})`}
         className="flex-1 min-h-0"
         value={value}
         onChange={(e) => setValue(e.target.value)}

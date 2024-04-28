@@ -1,3 +1,5 @@
+import TreeNode from "@components/TreeViewer/TreeNode";
+
 export type Parser = {
   name: string;
   description?: string;
@@ -13,3 +15,10 @@ export type TreeNode =
     }
   | undefined
   | null;
+
+export type ParserFunction = (data: string) => TreeNode;
+
+export const parseParserCode = (parserCode: string): ParserFunction => {
+  const parser = new Function("return " + parserCode);
+  return parser() as ParserFunction;
+};

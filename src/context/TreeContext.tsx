@@ -1,9 +1,11 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
-import { Parser, TreeNode } from "../parsers/parserApi";
+import { parseParserCode, Parser, TreeNode } from "../parsers/parserApi";
 import { LEVEL_ORDER_TRAVERSAL_PARSER } from "../parsers/levelOrderTraversalParser/levelOrderTraversalParser";
 import { ReactFlowAdapter } from "@components/TreeViewer/ReactFlowAdapters/api";
 import { customAdapter } from "@components/TreeViewer/ReactFlowAdapters/customAdapter";
+
+export const DEFAULT_INPUT = "[1,2,3,null,4]";
 
 type TreeContextType = {
   treeData: TreeNode;
@@ -38,15 +40,19 @@ export const TreeContextProvider = ({
   children: ReactNode;
   reactFlowAdapter?: ReactFlowAdapter;
 }) => {
-  const [treeData, setTreeData] = useState<TreeNode>(null);
-
-  const [parsers, setParsers] = useLocalStorage<Parser[]>("parsers", []);
-
   const [selectedParser, setSelectedParser] = useState(
     LEVEL_ORDER_TRAVERSAL_PARSER
   );
 
+  const [parsers, setParsers] = useLocalStorage<Parser[]>("parsers", []);
+
   const [editorValue, setEditorValue] = useState(selectedParser.parserFunction);
+
+  const defaultTree = parseParserCode(selectedParser.parserFunction)(
+    DEFAULT_INPUT
+  );
+
+  const [treeData, setTreeData] = useState<TreeNode>(defaultTree);
 
   return (
     <TreeContext.Provider
