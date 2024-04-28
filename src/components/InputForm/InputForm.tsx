@@ -23,7 +23,7 @@ import { TreeNode } from "../../parsers/parserApi";
 type InputFormProps = {};
 
 const InputForm = ({}: InputFormProps) => {
-  const { setTreeData, editorValue } = useTreeContext();
+  const { setTreeData, editorValue, selectedParser } = useTreeContext();
   const [value, setValue] = useState("");
   const [error, setError] = useState<Error | null>(null);
 
@@ -41,7 +41,10 @@ const InputForm = ({}: InputFormProps) => {
   };
 
   return (
-    <form className="inputFormContainer grid w-full gap-2" onSubmit={onSubmit}>
+    <form
+      className="inputFormContainer flex flex-col w-full h-full gap-2 p-[30px]"
+      onSubmit={onSubmit}
+    >
       <div className="flex items-center gap-2">
         <Label htmlFor="input" className="w-auto">
           Input
@@ -52,12 +55,15 @@ const InputForm = ({}: InputFormProps) => {
               <Info size={20} />
             </TooltipTrigger>
             <TooltipContent>
-              <p>Description</p>
+              <p className="whitespace-pre">
+                {selectedParser.inputDescription}
+              </p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </div>
       <Textarea
+        className="flex-1 min-h-0"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         id="input"
