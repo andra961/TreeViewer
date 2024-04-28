@@ -27,7 +27,7 @@ const TreeViewer = () => {
       debounce(() => {
         fitView({ duration: 200 });
       }, 110),
-    []
+    [fitView]
   );
 
   const ref = useRef<HTMLDivElement>(null);
