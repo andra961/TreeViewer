@@ -1,10 +1,11 @@
 import { Parser } from "../parserApi";
 
-const inputDescription = `Example input: [1,2,3, null, 4]
+const inputDescription = `Ex: [1,2,3, null, 4].
+It represents the serialized format of a binary tree using level order traversal, 
+where null signifies a path terminator where no node exists below
 `;
 
-const description = `Parses a tree from an array which is the result of a level order traversal of the tree.
-Null nodes represent null children from the above parents.
+const description = `Parses a Binary Tree from an array which represents the serialized format of a binary tree using level order traversal, where null signifies a path terminator where no node exists below.
 `;
 
 const parserString = `function parser(input) {

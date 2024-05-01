@@ -68,7 +68,7 @@ const InputForm = ({}: InputFormProps) => {
         onChange={(e) => setValue(e.target.value)}
         id="input"
       />
-      <Button>confirm</Button>
+      <Button>Parse</Button>
       {error && (
         <Alert variant="destructive">
           <AlertCircle className="h-4 w-4" />

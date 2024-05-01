@@ -712,10 +712,6 @@ body {
   height: 1px;
 }
 
-.h-\[200px\] {
-  height: 200px;
-}
-
 .max-h-96 {
   max-height: 24rem;
 }
@@ -772,10 +768,6 @@ body {
   width: 1px;
 }
 
-.w-\[350px\] {
-  width: 350px;
-}
-
 .min-w-\[8rem\] {
   min-width: 8rem;
 }
@@ -804,10 +796,6 @@ body {
   cursor: pointer;
 }
 
-.touch-none {
-  touch-action: none;
-}
-
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -834,10 +822,6 @@ body {
   gap: 0.5rem;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
@@ -862,14 +846,6 @@ body {
   border-radius: calc(var(--radius) - 4px);
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.rounded-\[inherit\] {
-  border-radius: inherit;
-}
-
 .border {
   border-width: 1px;
 }
@@ -887,28 +863,12 @@ body {
   border-top-width: 1px;
 }
 
-.border-l {
-  border-left-width: 1px;
-}
-
-.border-t {
-  border-top-width: 1px;
-}
-
 .border-destructive\/50 {
   border-color: hsl(var(--destructive) / 0.5);
 }
 
 .border-input {
   border-color: hsl(var(--input));
-}
-
-.border-l-transparent {
-  border-left-color: transparent;
-}
-
-.border-t-transparent {
-  border-top-color: transparent;
 }
 
 .bg-background {
@@ -949,10 +909,6 @@ body {
 
 .p-\[30px\] {
   padding: 30px;
-}
-
-.p-\[1px\] {
-  padding: 1px;
 }
 
 .px-3 {
@@ -1022,6 +978,10 @@ body {
 
 .font-medium {
   font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .font-semibold {

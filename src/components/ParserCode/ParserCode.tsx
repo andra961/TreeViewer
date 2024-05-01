@@ -25,7 +25,18 @@ const ParserCode = ({}: ParserCodeProps) => {
               <Info size={20} className="flex-shrink-0" />
             </TooltipTrigger>
             <TooltipContent>
-              <p className="whitespace-pre">{selectedParser.description}</p>
+              <p className="whitespace-pre font-normal">
+                <span className="font-medium">{selectedParser.name}: </span>
+                {selectedParser.description}
+              </p>
+              <p className="whitespace-pre font-normal">
+                You can directly modify the parser function in the editor below
+                and it will be run when you press{" "}
+                <span className="font-medium">Parse</span>.
+              </p>
+              <p className="whitespace-pre">
+                NOTE: be careful to not paste any malicious code in it.
+              </p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

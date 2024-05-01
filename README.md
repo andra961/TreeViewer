@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Tree Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A `react.js` app to visualize a Binary Tree parsed from user input. The default parser takes an input such as [1,2,3,null,4]: it represents the serialized format of a binary tree using level order traversal, where null signifies a path terminator where no node exists below.
+The parser code is shown in the `Parser` panel and can be edited directly by the user and run when the input is parsed.
+**_NOTE:_**: The function in the `Parser` panel will be directly executed on your input in the browser so be careful to not paste any malicious code in it.
 
-Currently, two official plugins are available:
+# Try it yourself
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The app is hosted live on https://andra961.github.io/TreeViewer/, give it a try!
 
-## Expanding the ESLint configuration
+## Install
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+First, be sure to have `Node.js` installed. In the root of the project run:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```shell
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+to install the npm packages.
+
+## Launch the project
+
+Launch the project through the following command:
+
+```shell
+npm run dev
+```
+
+This should launch the web app on http://localhost:5173.
